@@ -7,7 +7,7 @@ export default function SmartHomeMockup() {
 
   // ====== Hero light (依可視比例自動調整) ======
   const heroRef = React.useRef(null);
-  const [light, setLight] = React.useState(1);
+  const [light, setLight] = React.useState(1); // 0 (暗) ~ 1 (亮)
   React.useEffect(() => {
     const node = heroRef.current;
     if (!node) return;
@@ -45,11 +45,54 @@ export default function SmartHomeMockup() {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
-      v.play().catch(() => {});
-      setIsPaused(false);
+      v.muted = true; // 確保不被瀏覽器阻擋
+      v.play().then(() => setIsPaused(false)).catch(() => {});
     } else {
       v.pause();
       setIsPaused(true);
+    }
+  };
+
+  // ====== Contact Form (Formspree) ======
+  const [form, setForm] = React.useState({ name: '', contact: '', note: '' });
+  const [sending, setSending] = React.useState(false);
+  const [sent, setSent] = React.useState(false);
+  const [err, setErr] = React.useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((s) => ({ ...s, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setSent(false);
+    setErr('');
+    try {
+      const ENDPOINT = 'https://formspree.io/f/xzzkrovd'; // ✅ 已替換為你的表單
+      const fd = new FormData();
+      fd.append('name', form.name);
+      fd.append('contact', form.contact);
+      fd.append('note', form.note);
+
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok || data.ok) {
+        setSent(true);
+        setForm({ name: '', contact: '', note: '' });
+      } else {
+        setErr('送出失敗，稍後再試試看看。');
+      }
+    } catch (e2) {
+      setErr('網路連線異常，請稍後再試。');
+    } finally {
+      setSending(false);
     }
   };
 
@@ -98,44 +141,15 @@ export default function SmartHomeMockup() {
         ref={heroRef}
         className="w-full h-[90vh] relative bg-[url('/first.png')] bg-cover bg-center flex flex-col justify-end items-center text-center p-10 select-none"
       >
-        {/* 亮度遮罩：light 越大越亮（降低遮罩不透明度） */}
+        {/* 亮度遮罩 */}
         <div
           className="absolute inset-0 pointer-events-none transition-colors duration-150"
           style={{ background: `rgba(0,0,0,${0.1 + (1 - light) * 0.8})` }}
         />
         <div className="relative z-10">
-          <h1 className="text-5xl font-bold mb-2" style={{ color: 'var(--brand)' }}>
-            🌙 沐沐智慧家庭 MuMu Smart Home
+          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--brand)' }}>
+            燈光設計
           </h1>
-          <p className="text-lg opacity-90">上下滑動，亮度依圖片在視窗內的比例自動調整</p>
-          <p className="opacity-80">離開 30% → 亮度降 30%；回到 50% 可視 → 亮度為 50%。</p>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section className="max-w-5xl w-full py-20 px-6 text-center">
-        <h2 className="text-3xl font-semibold mb-6" style={{ color: 'var(--brand)' }}>
-          我們的產品
-        </h2>
-        <p className="text-neutral-400 mb-10">讓家不只是住，更能思考與感受。</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { icon: '💡', title: '智慧電燈', desc: '調光、情境模式、遠端控制' },
-            { icon: '🪟', title: '智慧窗簾', desc: '預約開關、日出日落自動化' },
-            { icon: '🧱', title: '鐵捲門整合', desc: '到家自動開啟、地理圍欄' },
-            { icon: '🍎', title: 'Apple HomeKit 連動', desc: 'Hey Siri 聲控全屋' },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="bg-neutral-900 p-6 rounded-2xl shadow-lg hover:bg-neutral-800 transition text-left border border-neutral-800"
-            >
-              <div className="text-4xl mb-2">{item.icon}</div>
-              <div className="text-lg font-semibold" style={{ color: 'var(--brand)' }}>
-                {item.title}
-              </div>
-              <div className="text-neutral-400 text-sm mt-1">{item.desc}</div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -145,7 +159,6 @@ export default function SmartHomeMockup() {
           <h2 className="text-3xl font-semibold mb-3" style={{ color: 'var(--brand)' }}>
             窗簾開關
           </h2>
-          <p className="opacity-80 mb-2">影片將持續循環播放。點一下影片可暫停/繼續。</p>
 
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-neutral-800 group">
             <video
@@ -155,17 +168,8 @@ export default function SmartHomeMockup() {
               muted
               playsInline
               autoPlay
-              onClick={togglePlay}
               className="w-full aspect-video bg-black cursor-pointer"
             />
-            {/* 暫停提示徽章 */}
-            {isPaused && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="px-3 py-1 rounded-full text-xs bg-black/50 border border-white/10">
-                  已暫停（點影片繼續）
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -198,7 +202,7 @@ export default function SmartHomeMockup() {
         <p className="text-neutral-400">「嘿 Siri，打開客廳燈」——如此簡單。</p>
       </section>
 
-      {/* Contact */}
+      {/* Contact (Formspree) */}
       <section id="contact" className="w-full py-20 text-center px-6">
         <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--brand)' }}>
           聯絡我們
@@ -210,15 +214,57 @@ export default function SmartHomeMockup() {
           </a>
         </div>
         <p className="text-neutral-500 mb-8">或留下你的聯絡方式，我們將盡快與你聯繫！</p>
-        <form className="max-w-md mx-auto flex flex-col gap-4">
-          <input type="text" placeholder="姓名" className="p-3 rounded-xl bg-neutral-800 border border-neutral-700" />
-          <input type="text" placeholder="電話或 LINE 帳號" className="p-3 rounded-xl bg-neutral-800 border border-neutral-700" />
-          <textarea placeholder="備註" className="p-3 rounded-xl bg-neutral-800 border border-neutral-700" rows="3" />
+
+        {sent && (
+          <div className="max-w-md mx-auto mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-left">
+            <div className="font-semibold text-emerald-400 mb-1">已送出成功 ✅</div>
+            <div className="text-sm text-emerald-200/90">
+              感謝您的留言，我們會盡快與您聯繫。也可以立即加 LINE 與我們聊聊！
+            </div>
+            <a
+              href="https://line.me/R/ti/p/@mumuhouse"
+              className="inline-block mt-3 px-4 py-2 rounded-full font-semibold text-black"
+              style={{ background: 'var(--brand)' }}
+            >
+              用 LINE 聯絡我們
+            </a>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col gap-4 text-left">
+          <input
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            placeholder="姓名"
+            className="p-3 rounded-xl bg-neutral-800 border border-neutral-700"
+          />
+          <input
+            name="contact"
+            value={form.contact}
+            onChange={handleChange}
+            required
+            placeholder="電話或 LINE 帳號"
+            className="p-3 rounded-xl bg-neutral-800 border border-neutral-700"
+          />
+          <textarea
+            name="note"
+            value={form.note}
+            onChange={handleChange}
+            placeholder="備註"
+            rows="3"
+            className="p-3 rounded-xl bg-neutral-800 border border-neutral-700"
+          />
+          {err && <div className="text-red-400 text-sm">{err}</div>}
+
           <button
-            className="mt-4 text-black font-semibold py-3 rounded-xl hover:opacity-90 transition"
+            type="submit"
+            disabled={sending}
+            className="mt-2 text-black font-semibold py-3 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: 'var(--brand)' }}
           >
-            送出
+            {sending ? '送出中…' : '送出'}
           </button>
         </form>
       </section>
