@@ -261,6 +261,6 @@ export default function SmartHomeMockup() {
           <span className="text-white font-bold text-sm">LINE 諮詢</span>
         </a>
       </div>
-    </>>
+    </>
   );
 }
