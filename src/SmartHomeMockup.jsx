@@ -1,22 +1,20 @@
 import React from 'react';
 
 export default function SmartHomeMockup() {
-  // ====== Brand System ======
   const BRAND = '#22d3ee';
   const BRAND_INK = '#0e7490';
 
-  // ====== Hero light (依可視比例自動調整) ======
+  // ====== Hero 燈光互動邏輯 ======
   const heroRef = React.useRef(null);
-  const [light, setLight] = React.useState(1); // 0 (暗) ~ 1 (亮)
+  const [light, setLight] = React.useState(1);
   React.useEffect(() => {
     const node = heroRef.current;
     if (!node) return;
-    const thresholds = Array.from({ length: 101 }, (_, i) => i / 100);
+    const thresholds = Array.from({ length: 51 }, (_, i) => i / 50);
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          const ratio = Math.max(0, Math.min(1, e.intersectionRatio || 0));
-          setLight(ratio);
+          setLight(Math.max(0, Math.min(1, e.intersectionRatio || 0)));
         });
       },
       { threshold: thresholds }
@@ -25,167 +23,193 @@ export default function SmartHomeMockup() {
     return () => io.disconnect();
   }, []);
 
-  // ====== Curtain: simple looping video with click-to-pause/play ======
+  // ====== 影片控制 ======
   const videoRef = React.useRef(null);
   const [isPaused, setIsPaused] = React.useState(false);
-
-  React.useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const onMeta = () => {
-      v.loop = true;
-      v.muted = true;
-      v.play().catch(() => {});
-    };
-    v.addEventListener('loadedmetadata', onMeta);
-    return () => v.removeEventListener('loadedmetadata', onMeta);
-  }, []);
-
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
-      v.muted = true; // 確保不被瀏覽器阻擋
-      v.play().then(() => setIsPaused(false)).catch(() => {});
+      v.play().then(() => setIsPaused(false));
     } else {
       v.pause();
       setIsPaused(true);
     }
   };
 
-  // ====== Contact Form (Formspree) ======
+  // ====== 表單邏輯 (保持原樣但優化 UI) ======
   const [form, setForm] = React.useState({ name: '', contact: '', note: '' });
   const [sending, setSending] = React.useState(false);
   const [sent, setSent] = React.useState(false);
-  const [err, setErr] = React.useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    setSent(false);
-    setErr('');
     try {
-      const ENDPOINT = 'https://formspree.io/f/xzzkrovd'; // ✅ 已替換為你的表單
-      const fd = new FormData();
-      fd.append('name', form.name);
-      fd.append('contact', form.contact);
-      fd.append('note', form.note);
-
-      const res = await fetch(ENDPOINT, {
+      const res = await fetch('https://formspree.io/f/xzzkrovd', {
         method: 'POST',
-        body: fd,
+        body: new FormData(e.target),
         headers: { Accept: 'application/json' },
       });
-      const data = await res.json().catch(() => ({}));
-
-      if (res.ok || data.ok) {
-        setSent(true);
-        setForm({ name: '', contact: '', note: '' });
-      } else {
-        setErr('送出失敗，稍後再試試看看。');
-      }
-    } catch (e2) {
-      setErr('網路連線異常，請稍後再試。');
-    } finally {
-      setSending(false);
-    }
+      if (res.ok) { setSent(true); setForm({ name: '', contact: '', note: '' }); }
+    } finally { setSending(false); }
   };
 
-
   return (
-    <div className="min-h-screen bg-neutral-950 text-white flex flex-col items-center selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-cyan-500/30">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap');
-        :root{ --brand:${BRAND}; --brand-ink:${BRAND_INK}; }
-        html { scroll-behavior: smooth; }
-        
-        /* 讓進入視線的動畫更平滑 */
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        :root { --brand: ${BRAND}; }
+        html { scroll-behavior: smooth; font-family: 'Noto Sans TC', sans-serif; }
+        .text-balance { text-wrap: balance; }
       `}</style>
 
-      {/* Sticky Header - 增加更細緻的毛玻璃 */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/60 backdrop-blur-lg">
-        <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-cyan-400 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform">
-               <span className="text-black font-bold text-xs">M</span>
-            </div>
-            <span className="text-white font-bold tracking-wider text-lg">沐沐智慧家庭</span>
+      {/* SEO 隱藏標題 */}
+      <h1 className="sr-only">沐沐智慧家庭 - 提供專業 HomeKit 燈光設計與智慧家庭服務</h1>
+
+      {/* Header */}
+      <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-md">
+        <nav className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded bg-cyan-400 flex items-center justify-center font-bold text-black text-xs">MM</div>
+            <span className="font-bold tracking-tight text-lg">沐沐智慧家庭 ＭＭ</span>
+          </div>
+          <a href="#contact" className="bg-cyan-400 hover:bg-cyan-300 text-black px-5 py-2 rounded-full text-sm font-bold transition-all transform active:scale-95">
+            立即諮詢
           </a>
-          <a
-            href="#contact"
-            className="rounded-full px-5 py-2 text-sm font-bold text-black hover:scale-105 active:scale-95 transition"
-            style={{ background: 'var(--brand)' }}
-          >
-            免費諮詢
-          </a>
-        </div>
+        </nav>
       </header>
 
-      {/* Hero - 增加文字陰影提高可讀性 */}
-      <section
-        ref={heroRef}
-        className="w-full h-screen relative bg-[url('/first.png')] bg-cover bg-center flex flex-col justify-center items-center text-center p-10"
-      >
-        <div
-          className="absolute inset-0 pointer-events-none transition-opacity duration-300"
-          style={{ background: `rgba(0,0,0,${0.2 + (1 - light) * 0.7})` }}
-        />
-        <div className="relative z-10 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter" style={{ color: 'var(--brand)', textShadow: '0 0 20px rgba(34,211,238,0.5)' }}>
-            燈光設計
-          </h1>
-          <p className="text-white/80 text-lg md:text-xl font-light">讓光線跟隨你的情緒，點亮生活的每一刻</p>
-        </div>
-        <div className="absolute bottom-10 animate-bounce text-white/30">↓</div>
-      </section>
+      <main>
+        {/* Section 1: Hero (RWD 優化) */}
+        <section 
+          ref={heroRef}
+          className="relative min-h-[70vh] md:h-[90vh] w-full flex flex-col items-center justify-center overflow-hidden"
+        >
+          {/* 背景圖層 */}
+          <div 
+            className="absolute inset-0 bg-[url('/first.png')] bg-cover bg-center transition-transform duration-[2s]"
+            style={{ transform: `scale(${1.05 - light * 0.05})` }}
+          />
+          {/* 動態亮度遮罩 */}
+          <div 
+            className="absolute inset-0 transition-colors duration-300"
+            style={{ backgroundColor: `rgba(0,0,0,${0.3 + (1 - light) * 0.6})` }}
+          />
+          
+          <div className="relative z-10 px-6 text-center mt-20 md:mt-0">
+            <h2 className="text-4xl md:text-7xl font-bold mb-4 tracking-tighter" style={{ color: 'var(--brand)' }}>
+              HomeKit 燈光設計
+            </h2>
+            <p className="text-lg md:text-2xl font-light tracking-widest text-white/90">
+              讓光線成為空間的靈魂
+            </p>
+          </div>
+        </section>
 
-      {/* Feature Section - 增加漸層背景 */}
-      <section className="w-full relative bg-neutral-900 py-24 overflow-hidden">
-        {/* 裝飾性背景光 */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full" />
-        
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-8 italic" style={{ color: 'var(--brand)' }}>智能窗簾</h2>
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer" onClick={togglePlay}>
-            <video
-              ref={videoRef}
-              src="/video.mp4"
-              loop muted playsInline autoPlay
-              className="w-full aspect-video object-cover"
-            />
-            {/* 播放按鈕提示 */}
-            {isPaused && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                   <div className="w-0 h-0 border-y-[10px] border-y-transparent border-l-[18px] border-l-white ml-1" />
-                </div>
+        {/* Slogan Barrier */}
+        <section className="py-20 px-6 text-center bg-gradient-to-b from-neutral-950 to-neutral-900">
+          <div className="max-w-3xl mx-auto border-y border-white/10 py-12">
+            <p className="text-xl md:text-2xl font-medium leading-loose text-balance">
+              「穩定，是智慧生活的底線；<br className="md:hidden" />
+              氛圍，是我們的追求。」
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2: Video (智慧窗簾) */}
+        <section className="py-24 px-6 bg-neutral-900">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+              <div className="text-left">
+                <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Smart Control</span>
+                <h2 className="text-3xl font-bold mt-2">智慧窗簾系統</h2>
               </div>
+              <p className="text-neutral-400 text-sm">點擊影片可切換播放狀態</p>
+            </div>
+            
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/5 cursor-pointer group" onClick={togglePlay}>
+              <video 
+                ref={videoRef}
+                src="/video.mp4"
+                loop muted playsInline autoPlay
+                className="w-full aspect-video object-cover"
+              />
+              {isPaused && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+                   <div className="w-20 h-20 bg-cyan-400 rounded-full flex items-center justify-center shadow-lg">
+                     <div className="w-0 h-0 border-y-[12px] border-y-transparent border-l-[20px] border-l-black ml-1" />
+                   </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: About (品牌故事與 SEO) */}
+        <section className="py-24 px-6 max-w-4xl mx-auto text-center">
+          <h2 className="text-cyan-400 text-sm tracking-[0.3em] mb-4 uppercase">About MuMu</h2>
+          <h3 className="text-3xl font-bold mb-8">來自彰化，傳承五十年的工藝</h3>
+          <p className="text-lg text-neutral-300 leading-[2.2] tracking-wide text-balance">
+            我們擁有超過 50 年的玻璃工程專業背景，<br />
+            深知建築結構與光影的互動。現在，我們將這份職人精神結合{' '}
+            <strong className="text-cyan-400">智慧家庭服務</strong>，<br />
+            為您打造專屬的 <strong className="text-cyan-400">HomeKit 燈光設計</strong> 解決方案。
+          </p>
+        </section>
+
+        {/* Section 4: Contact Form */}
+        <section id="contact" className="py-24 px-6 bg-neutral-900">
+          <div className="max-w-xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">預約規劃</h2>
+              <p className="text-neutral-400">留下資料，由專業工程師為您提供建議</p>
+            </div>
+
+            {sent ? (
+              <div className="bg-cyan-400/10 border border-cyan-400/50 p-8 rounded-3xl text-center">
+                <h4 className="text-cyan-400 text-xl font-bold mb-2">訊息已送出！</h4>
+                <p className="text-sm text-cyan-100/70 mb-6">我們將在 24 小時內聯繫您。</p>
+                <a href="https://line.me/ti/p/~mish0207" className="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold">
+                  直接透過 LINE 諮詢
+                </a>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input name="name" required placeholder="姓名" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                <input name="contact" required placeholder="電話或 LINE ID" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                <textarea name="note" rows="4" placeholder="您感興趣的服務（如：全屋智慧燈光、電動窗簾...）" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                <button disabled={sending} className="w-full bg-cyan-400 text-black font-bold py-4 rounded-2xl hover:bg-cyan-300 transition-all disabled:opacity-50">
+                  {sending ? '傳送中...' : '送出需求'}
+                </button>
+              </form>
             )}
           </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-white/5 text-center">
+        <div className="flex justify-center gap-6 mb-8 text-neutral-400 text-sm">
+          <span>LINE ID: mish0207</span>
+          <span>電話: 0975-090-703</span>
         </div>
-      </section>
-
-      {/* Mobile Floating CTA */}
-      <a
-        href="https://line.me/R/ti/p/@mumuhouse"
-        aria-label="加入 LINE 與我們聯絡"
-        className="fixed md:hidden right-4 bottom-6 inline-flex items-center gap-2 px-4 py-3 rounded-full shadow-lg"
-        style={{ background: 'var(--brand)', color: '#0b1220' }}
-      >
-        <span className="text-xl">💬</span>
-        <span className="text-sm font-semibold">LINE 立即諮詢</span>
-      </a>
-
-      <footer className="py-12 text-neutral-500 text-sm">
-        © 2025 沐沐智慧家庭 MuMu Smart Home
+        <p className="text-neutral-600 text-xs">© 2025 沐沐智慧家庭 - 彰化專業智慧家居工程</p>
       </footer>
+
+      {/* Floating Line CTA */}
+      <a
+        href="https://line.me/ti/p/~mish0207"
+        className="fixed right-6 bottom-6 z-[100] bg-[#06C755] hover:scale-110 transition-transform flex items-center gap-2 px-5 py-3 rounded-full shadow-2xl"
+      >
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" 
+          alt="Line" 
+          className="w-5 h-5" 
+          loading="lazy" 
+        />
+        <span className="text-white font-bold text-sm">LINE 諮詢</span>
+      </a>
     </div>
   );
 }
