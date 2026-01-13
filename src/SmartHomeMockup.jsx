@@ -104,7 +104,7 @@ export default function SmartHomeMockup() {
               <span className="font-bold tracking-tight text-lg">沐沐智慧家庭</span>
             </div>
             <a href="#contact" className="bg-cyan-400 hover:bg-cyan-300 text-black px-5 py-2 rounded-full text-sm font-bold transition-all transform active:scale-95">
-              立即諮詢
+              立即體驗
             </a>
           </nav>
         </header>
@@ -112,37 +112,68 @@ export default function SmartHomeMockup() {
         <main>
 
           {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
+          {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
           <section 
             ref={heroRef}
-            className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden"
+            className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden px-6"
           >
-            {/* 動態背景與亮度遮罩 (保持原有 light 互動) */}
+            {/* 背景圖與亮度遮罩 (保持原有 light 互動邏輯) */}
             <div 
               className="absolute inset-0 bg-[url('/first.png')] bg-cover bg-center transition-transform duration-[10s]"
               style={{ transform: `scale(${1.1 - light * 0.1})` }}
             />
             <div className="absolute inset-0 bg-black/50" />
           
-            <div className="relative z-10 px-6 max-w-5xl">
-              {/* 1. 服務商定位標籤 */}
-              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 animate-fade-in">
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 專業規劃
-                </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 精準安裝
-                </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 原廠保固
-                </span>
+            <div className="relative z-10 max-w-5xl">
+              {/* 1. 服務商定位標籤 - 強化勾選視覺 */}
+              <div className="mb-8 flex flex-wrap justify-center gap-4 md:gap-8 animate-fade-in">
+                <div className="flex items-center gap-2">
+                  {/* 綠色打勾 Icon */}
+                  <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="text-white text-sm md:text-base font-bold tracking-[0.3em] uppercase">
+                    專業規劃
+                  </span>
+                </div>
+                
+                <div className="flex items-center gap-2 border-l border-white/20 pl-4 md:pl-8">
+                  <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="text-white text-sm md:text-base font-bold tracking-[0.3em] uppercase">
+                    安裝服務
+                  </span>
+                </div>
               </div>
           
-              {/* 2. 主標題：直接點出「規劃與安裝」 */}
-              <h2 className="text-4xl md:text-7xl font-bold mb-8 tracking-tight text-white leading-[1.15]">
-                沐沐從規劃到安裝，<br />
-                打造最懂您的<span className="text-cyan-400 underline underline-offset-8 decoration-cyan-400/30">智慧家庭</span>
+              {/* 2. 主標題 - 直接點出規劃與安裝，並優化字級張力 */}
+              <h2 className="text-5xl md:text-8xl font-extrabold mb-10 tracking-tighter text-white leading-[1.1]">
+                從<span className="text-cyan-400">規劃</span>到<span className="text-cyan-400">安裝</span><br />
+                打造您的智慧家庭
               </h2>
-
+              
+              {/* 副標題 - 簡潔有力地補充 */}
+              <p className="text-lg md:text-2xl font-light text-neutral-300 mb-12 max-w-2xl mx-auto leading-relaxed tracking-wide">
+                我們不只是設備商，更是您的空間規劃師。<br className="hidden md:block" />
+                提供一站式智慧生活解決方案。
+              </p>
+          
+              {/* 行動按鈕 */}
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#contact" className="w-full md:w-auto px-10 py-4 bg-cyan-400 text-black font-bold rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(34,211,238,0.4)]">
+                  立即預約現場規劃
+                </a>
+                <a href="https://line.me/ti/p/~mish0207" className="w-full md:w-auto px-10 py-4 border border-white/20 bg-white/5 backdrop-blur-sm text-white font-bold rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="Line" className="w-4 h-4" />
+                  詢問規劃細節
+                </a>
+              </div>
+            </div>
+          
+            {/* 下滑提示 */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-30 animate-bounce">
+              <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent mx-auto" />
             </div>
           </section>
           
