@@ -139,6 +139,72 @@ export default function SmartHomeMockup() {
               </p>
             </div>
           </section>
+
+          {/* Section: Our Services */}
+          <section id="services" className="py-24 px-6 bg-neutral-950">
+            <div className="max-w-7xl mx-auto">
+              {/* 標題區 */}
+              <div className="text-center mb-16">
+                <span className="text-cyan-400 text-sm tracking-[0.3em] font-medium uppercase">Our Services</span>
+                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">全方位智慧服務</h2>
+                <p className="max-w-2xl mx-auto text-neutral-400 text-lg leading-relaxed">
+                  我們提供從規劃到安裝的完整解決方案，不論是新成屋裝潢還是舊屋升級，
+                  沐沐智慧家庭都能為您打造最溫馨、穩定的系統。
+                </p>
+              </div>
+          
+              {/* 服務卡片網格 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "智慧照明系統",
+                    desc: "隨心所欲調整色溫與亮度，設定閱讀、觀影或派對模式，讓光線成為家中最美的裝潢。",
+                    icon: "💡"
+                  },
+                  {
+                    title: "電動窗簾整合",
+                    desc: "早晨讓陽光喚醒你，離家自動關閉。支援語音控制與自動化場景連動，優雅生活從此開始。",
+                    icon: "🪟"
+                  },
+                  {
+                    title: "全屋網路覆蓋",
+                    desc: "智慧家庭的基礎是穩定的網路。我們提供企業級 Wi-Fi 漫遊規劃，確保角落也能高速上網。",
+                    icon: "📶"
+                  },
+                  {
+                    title: "智慧安防監控",
+                    desc: "智慧門鎖、攝影機與感測器聯動。異常入侵即時推播，外出也能隨時掌握家中狀況。",
+                    icon: "🛡️"
+                  },
+                  {
+                    title: "影音娛樂控制",
+                    desc: "整合電視、音響與投影機，一鍵切換「劇院模式」，享受沉浸式視聽體驗，告別繁雜遙控器。",
+                    icon: "🎬"
+                  },
+                  {
+                    title: "語音聲控助理",
+                    desc: "支援 Apple HomeKit, Google Home。動口不動手，讓房子聽懂你的指令，老人小孩都能輕鬆使用。",
+                    icon: "🗣️"
+                  }
+                ].map((item, idx) => (
+                  <div 
+                    key={idx} 
+                    className="group p-8 rounded-3xl bg-neutral-900 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 shadow-xl"
+                  >
+                    <div className="text-3xl mb-4 bg-neutral-800 w-14 h-14 flex items-center justify-center rounded-2xl group-hover:scale-110 transition-transform">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-neutral-400 leading-relaxed text-sm">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
   
           {/* Section 2: Video (智慧窗簾) */}
           <section className="py-24 px-6 bg-neutral-900">
