@@ -56,6 +56,27 @@ export default function SmartHomeMockup() {
   };
 
   return (
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "沐沐智慧家庭 MuMu Smart Home",
+        "description": "彰化在地 50 年工程背景，專業第三代轉型智慧家庭服務，專精 Apple HomeKit 燈光設計、智慧窗簾整合。",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Changhua",
+          "addressCountry": "TW"
+        },
+        "telephone": "+886-975-090-703",
+        "url": "您的網站網址",
+        "services": [
+          "智慧燈光設計",
+          "HomeKit 系統整合",
+          "智慧窗簾控制",
+          "玻璃工程"
+        ]
+      })}
+    </script>
     <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-cyan-500/30">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
@@ -65,14 +86,14 @@ export default function SmartHomeMockup() {
       `}</style>
 
       {/* SEO 隱藏標題 */}
-      <h1 className="sr-only">沐沐智慧家庭 - 提供專業 HomeKit 燈光設計與智慧家庭服務</h1>
+      <h1 className="sr-only">沐沐智慧家庭 - 提供專業 智慧燈光設計與智慧家庭服務</h1>
 
       {/* Header */}
       <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-md">
         <nav className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded bg-cyan-400 flex items-center justify-center font-bold text-black text-xs">MM</div>
-            <span className="font-bold tracking-tight text-lg">沐沐智慧家庭 ＭＭ</span>
+            <span className="font-bold tracking-tight text-lg">沐沐智慧家庭</span>
           </div>
           <a href="#contact" className="bg-cyan-400 hover:bg-cyan-300 text-black px-5 py-2 rounded-full text-sm font-bold transition-all transform active:scale-95">
             立即諮詢
@@ -99,7 +120,7 @@ export default function SmartHomeMockup() {
           
           <div className="relative z-10 px-6 text-center mt-20 md:mt-0">
             <h2 className="text-4xl md:text-7xl font-bold mb-4 tracking-tighter" style={{ color: 'var(--brand)' }}>
-              HomeKit 燈光設計
+              智慧燈光控制
             </h2>
             <p className="text-lg md:text-2xl font-light tracking-widest text-white/90">
               讓光線成為空間的靈魂
@@ -174,7 +195,7 @@ export default function SmartHomeMockup() {
               <div className="space-y-4 border-l-2 border-cyan-500/50 pl-6">
                 <h4 className="text-cyan-400 font-bold text-lg">智慧家庭的轉身</h4>
                 <p className="text-neutral-300">
-                  現在，第三代將這份職人精神與智慧科技接軌。我們不只理解玻璃與光，更精通系統整合。將經典工程經驗轉化為專業的 **HomeKit 燈光設計**。
+                  現在，第三代將這份職人精神與智慧科技接軌。我們不只理解玻璃與光，更精通系統整合。將經典工程經驗轉化為專業的 <b>智慧燈光控制</b>。
                 </p>
               </div>
             </div>
