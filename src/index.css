@@ -9,6 +9,9 @@
 
 /* 1. 引入 Google Fonts (推薦 Noto Sans TC) */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+@import url('https://font.emtech.cc/css/emfont-ChenYuLuoYan/400');
+
+
 
 @layer base {
   :root {
@@ -28,7 +31,7 @@
 
   /* 2. 優化中文字體排版細節 */
   h1, h2, h3, h4 {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft YaHei", "微軟雅黑", sans-serif !important;
+    font-family: emfont-ChenYuLuoYan, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft YaHei", "微軟雅黑", sans-serif !important;
     -webkit-font-smoothing: antialiased;
     /*  @apply tracking-tight font-bold;
     標題字距稍微縮緊一點點，比較有張力 */
