@@ -351,10 +351,11 @@ export default function SmartHomeMockup() {
           
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-12">
                       {[
-                        { label: "專業燈光設計規劃", icon: "🎨" },
-                        { label: "智慧燈具安裝 (20盞)", icon: "💡" },
-                        { label: "智慧開關切換器 (5組)", icon: "🔘" },
-                        { label: "智慧電動窗簾系統 (1組)", icon: "🪟" },
+                        { label: "燈光設計規劃", icon: "🎨" },
+                        { label: "20盞燈具", icon: "💡" },
+                        { label: "5組開關切換", icon: "🔘" },
+                        { label: "1組電動窗簾", icon: "🪟" },
+                        { label: "全屋網路設定", icon: "🛜" },
                         { label: "全屋智慧系統整合", icon: "🔗" },
                         { label: "專屬生活情境設定", icon: "🪄" }
                       ].map((item, idx) => (
@@ -371,9 +372,6 @@ export default function SmartHomeMockup() {
                       <div className="text-sm text-neutral-500">
                         * 包含施工、設定及原廠一年保固服務
                       </div>
-                      <a href="https://line.me/ti/p/~mish0207" className="w-full md:w-auto px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-colors text-center">
-                        立即預約諮詢
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -434,7 +432,7 @@ export default function SmartHomeMockup() {
             className="w-5 h-5" 
             loading="lazy" 
           />
-          <span className="text-white font-bold text-sm">LINE 諮詢</span>
+          <span className="text-white font-bold text-sm">LINE 立即諮詢</span>
         </a>
       </div>
     </>
