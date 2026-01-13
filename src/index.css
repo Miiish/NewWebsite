@@ -28,6 +28,7 @@
 
   /* 2. 優化中文字體排版細節 */
   h1, h2, h3, h4 {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
     @apply tracking-tight font-bold;
     /* 標題字距稍微縮緊一點點，比較有張力 */
     letter-spacing: -0.02em;
