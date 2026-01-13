@@ -175,16 +175,6 @@ export default function SmartHomeMockup() {
               </p>
             </div>
           </section>
-  
-          {/* Slogan Barrier */}
-          <section className="py-20 px-6 text-center bg-gradient-to-b from-neutral-950 to-neutral-900">
-            <div className="max-w-3xl mx-auto border-y border-white/10 py-12">
-              <p className="text-xl md:text-2xl font-medium leading-loose text-balance">
-                「穩定，是智慧生活的底線；<br className="md:hidden" />
-                氛圍，是我們的追求。」
-              </p>
-            </div>
-          </section>
 
           {/* Section: Our Services */}
           <section id="services" className="py-24 px-6 bg-neutral-950">
@@ -278,6 +268,17 @@ export default function SmartHomeMockup() {
                   </div>
                 )}
               </div>
+            </div>
+          </section>
+
+          
+          {/* Slogan Barrier */}
+          <section className="py-20 px-6 text-center bg-gradient-to-b from-neutral-950 to-neutral-900">
+            <div className="max-w-3xl mx-auto border-y border-white/10 py-12">
+              <p className="text-xl md:text-2xl font-medium leading-loose text-balance">
+                「穩定，是智慧生活的底線；<br className="md:hidden" />
+                氛圍，是我們的追求。」
+              </p>
             </div>
           </section>
   
