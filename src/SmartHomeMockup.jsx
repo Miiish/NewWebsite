@@ -72,10 +72,16 @@ export default function SmartHomeMockup() {
           "telephone": "+886-975-090-703",
           "url": "您的網站網址",
           "services": [
+            "智能燈",
             "智慧燈光設計",
             "HomeKit 系統整合",
-            "智慧窗簾控制",
-            "玻璃工程"
+            "電動窗簾整合",
+            "全屋網路覆蓋",
+            "企業級 Wi-Fi 規劃",
+            "智慧安防監控",
+            "智慧門鎖",
+            "全屋影音控制",
+            "Google Home 語音聲控"
           ]
         })}
       </script>
@@ -104,6 +110,61 @@ export default function SmartHomeMockup() {
         </header>
   
         <main>
+          {/* Section 1: Hero (優化版入口) */}
+<section 
+  ref={heroRef}
+  className="relative h-[85vh] md:h-screen w-full flex flex-col items-center justify-center overflow-hidden"
+>
+  {/* 背景圖層：加入微弱的縮放動畫效果 */}
+  <div 
+    className="absolute inset-0 bg-[url('/first.png')] bg-cover bg-center transition-transform duration-[10s] ease-out scale-105"
+    style={{ transform: `scale(${1.1 - light * 0.1})` }}
+  />
+  
+  {/* 動態光影遮罩：根據滾動比例 (light) 調整亮度 */}
+  <div 
+    className="absolute inset-0 transition-colors duration-500"
+    style={{ 
+      background: `radial-gradient(circle, rgba(0,0,0,${0.2 + (1 - light) * 0.6}) 0%, rgba(0,0,0,${0.4 + (1 - light) * 0.5}) 100%)` 
+    }}
+  />
+  
+  <div className="relative z-10 px-6 text-center">
+    {/* 增加一個精緻的小標籤 */}
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 animate-fade-in">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+      </span>
+      <span className="text-white/80 text-xs tracking-[0.2em] font-medium uppercase">MuMu Smart Home</span>
+    </div>
+
+    {/* 主標題：優化字體大小與間距 */}
+    <h2 className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter text-white drop-shadow-2xl">
+      智慧燈光<span className="text-cyan-400">控制</span>
+    </h2>
+    
+    {/* 副標題：增加文字陰影確保在各種亮度下清晰 */}
+    <p className="text-xl md:text-3xl font-light tracking-[0.3em] text-white/90 drop-shadow-lg">
+      讓光線成為空間的靈魂
+    </p>
+
+    {/* 行動呼籲：增加一個快速滾動按鈕 */}
+    <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center items-center">
+      <a href="#contact" className="px-8 py-4 bg-cyan-400 text-black font-bold rounded-full hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+        立即規劃氛圍
+      </a>
+      <a href="#services" className="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-all">
+        探索更多服務
+      </a>
+    </div>
+  </div>
+
+  {/* 下滑提示 */}
+  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+    <div className="w-1 h-12 rounded-full bg-gradient-to-b from-cyan-400 to-transparent" />
+  </div>
+</section>
           {/* Section 1: Hero (RWD 優化) */}
           <section 
             ref={heroRef}
@@ -212,7 +273,7 @@ export default function SmartHomeMockup() {
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div className="text-left">
                   <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Smart Control</span>
-                  <h2 className="text-3xl font-bold mt-2">智慧窗簾系統</h2>
+                  <h2 className="text-3xl font-bold mt-2">窗簾系統</h2>
                 </div>
                 <p className="text-neutral-400 text-sm">點擊影片可切換播放狀態</p>
               </div>
