@@ -100,7 +100,7 @@ export default function SmartHomeMockup() {
         <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-md">
           <nav className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-cyan-400 flex items-center justify-center font-bold text-black text-xs">MUMU</div>
+              <div className="w-8 h-8 rounded bg-cyan-400 flex items-center justify-center font-bold text-black text-xs">MU</div>
               <span className="font-bold tracking-tight text-lg">沐沐智慧家庭</span>
             </div>
             <a href="#contact" className="bg-cyan-400 hover:bg-cyan-300 text-black px-5 py-2 rounded-full text-sm font-bold transition-all transform active:scale-95">
