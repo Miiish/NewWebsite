@@ -178,15 +178,7 @@ export default function SmartHomeMockup() {
                 </p>
               </div>
             </div>
-        
-            {/* Slogan 強調區塊 */}
-            <div className="mt-20 py-12 border-t border-white/5">
-              <blockquote className="text-2xl md:text-3xl font-medium text-white/90">
-                「穩定，是第一代留下的<span className="text-cyan-400">底線</span>；<br />
-                氛圍，是第三代追求的<span className="text-cyan-400">極限</span>。」
-              </blockquote>
-            </div>
-        
+            
             <p className="mt-12 text-neutral-500 max-w-2xl mx-auto text-sm tracking-widest">
               我們在傳統工法的基石上，為您打造最懂人心的智慧居家。
             </p>
