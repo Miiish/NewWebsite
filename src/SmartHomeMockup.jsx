@@ -138,7 +138,7 @@ export default function SmartHomeMockup() {
               </div>
           
               {/* 2. 主標題：直接點出「規劃與安裝」 */}
-              <h2 className="text-2xl md:text-5xl font-bold mb-8 tracking-tight text-white leading-[1.15]">
+              <h2 className="text-2xl md:text-5xl mb-8 tracking-tight text-white leading-[1.15]">
                 從規劃到安裝，<br />
                 打造最懂您的<span className="text-cyan-400 underline underline-offset-8 decoration-cyan-400/30">智慧家庭</span>
               </h2>
