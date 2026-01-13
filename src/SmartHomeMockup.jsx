@@ -46,7 +46,7 @@ export default function SmartHomeMockup() {
     e.preventDefault();
     setSending(true);
     try {
-      const res = await fetch('https://formspree.io/f/xzzkrovd', {
+      const res = await fetch('https://formspree.io/f/xzddbjjk', {
         method: 'POST',
         body: new FormData(e.target),
         headers: { Accept: 'application/json' },
@@ -319,35 +319,6 @@ export default function SmartHomeMockup() {
               </p>
             </div>
           </section>
-  
-          {/* Section 4: Contact Form */}
-          <section id="contact" className="py-24 px-6 bg-neutral-900">
-            <div className="max-w-xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">預約規劃</h2>
-                <p className="text-neutral-400">留下資料，由專業工程師為您提供建議</p>
-              </div>
-  
-              {sent ? (
-                <div className="bg-cyan-400/10 border border-cyan-400/50 p-8 rounded-3xl text-center">
-                  <h4 className="text-cyan-400 text-xl font-bold mb-2">訊息已送出！</h4>
-                  <p className="text-sm text-cyan-100/70 mb-6">我們將在 24 小時內聯繫您。</p>
-                  <a href="https://line.me/ti/p/~mish0207" className="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold">
-                    直接透過 LINE 諮詢
-                  </a>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <input name="name" required placeholder="姓名" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
-                  <input name="contact" required placeholder="電話或 LINE ID" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
-                  <textarea name="note" rows="4" placeholder="您感興趣的服務（如：全屋智慧燈光、電動窗簾...）" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
-                  <button disabled={sending} className="w-full bg-cyan-400 text-black font-bold py-4 rounded-2xl hover:bg-cyan-300 transition-all disabled:opacity-50">
-                    {sending ? '傳送中...' : '送出需求'}
-                  </button>
-                </form>
-              )}
-            </div>
-          </section>
 
           {/* Section: Pricing/Package */}
           <section className="py-24 px-6 bg-neutral-900">
@@ -370,18 +341,18 @@ export default function SmartHomeMockup() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                       <div>
                         <h3 className="text-2xl font-bold text-white mb-2">小資輕奢組合</h3>
-                        <p className="text-cyan-400 font-medium">適合 2 房 1 廳 / 3 房 1 廳配置</p>
+                        <p className="text-cyan-400 font-medium">適合 2 房 1 廳 / 3 房 2 廳配置</p>
                       </div>
                       <div className="text-left md:text-right">
                         <span className="text-sm text-neutral-500 line-through block">原價 $185,000</span>
-                        <span className="text-4xl md:text-5xl font-bold text-white">NT$ 150,000</span>
+                        <span className="text-4xl md:text-5xl font-bold text-white">NT$ 170,000</span>
                       </div>
                     </div>
           
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-12">
                       {[
                         { label: "專業燈光設計規劃", icon: "🎨" },
-                        { label: "智慧燈具安裝 (20顆)", icon: "💡" },
+                        { label: "智慧燈具安裝 (20盞)", icon: "💡" },
                         { label: "智慧開關切換器 (5組)", icon: "🔘" },
                         { label: "智慧電動窗簾系統 (1組)", icon: "🪟" },
                         { label: "全屋智慧系統整合", icon: "🔗" },
@@ -409,7 +380,39 @@ export default function SmartHomeMockup() {
               </div>
             </div>
           </section>
+
+          {/* Section 4: Contact Form */}
+          <section id="contact" className="py-24 px-6 bg-neutral-900">
+            <div className="max-w-xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">預約體驗</h2>
+                <p className="text-neutral-400">留下資料，由專人與您聯繫</p>
+              </div>
+  
+              {sent ? (
+                <div className="bg-cyan-400/10 border border-cyan-400/50 p-8 rounded-3xl text-center">
+                  <h4 className="text-cyan-400 text-xl font-bold mb-2">訊息已送出！</h4>
+                  <p className="text-sm text-cyan-100/70 mb-6">我們將在 24 小時內聯繫您。</p>
+                  <a href="https://line.me/ti/p/~mish0207" className="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold">
+                    直接透過 LINE 諮詢
+                  </a>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input name="name" required placeholder="姓名" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                  <input name="contact" required placeholder="電話或 LINE ID" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                  <textarea name="note" rows="4" placeholder="留下有空的時間（如：平日早上、全天有空...）" className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors" />
+                  <button disabled={sending} className="w-full bg-cyan-400 text-black font-bold py-4 rounded-2xl hover:bg-cyan-300 transition-all disabled:opacity-50">
+                    {sending ? '傳送中...' : '送出需求'}
+                  </button>
+                </form>
+              )}
+            </div>
+          </section>
         </main>
+
+        
+          
   
         {/* Footer */}
         <footer className="py-12 px-6 border-t border-white/5 text-center">
