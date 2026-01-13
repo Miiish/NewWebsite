@@ -56,6 +56,7 @@ export default function SmartHomeMockup() {
   };
 
   return (
+    {/* 把這段放回 return 的最上方 */}
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
