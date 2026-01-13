@@ -348,6 +348,67 @@ export default function SmartHomeMockup() {
               )}
             </div>
           </section>
+
+          {/* Section: Pricing/Package */}
+          <section className="py-24 px-6 bg-neutral-900">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="text-cyan-400 text-sm tracking-[0.3em] font-medium uppercase">Affordable Luxury</span>
+                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6">全屋氛圍規劃方案</h2>
+                <p className="text-neutral-400 text-lg">
+                  專為小資族設計，用最合理的預算，實現最完整的智慧生活體驗。
+                </p>
+              </div>
+          
+              {/* 方案卡片 */}
+              <div className="relative group">
+                {/* 背景發光效果 */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                
+                <div className="relative bg-neutral-950 border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
+                  <div className="p-8 md:p-12">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-2">小資輕奢組合</h3>
+                        <p className="text-cyan-400 font-medium">適合 2 房 1 廳 / 3 房 1 廳配置</p>
+                      </div>
+                      <div className="text-left md:text-right">
+                        <span className="text-sm text-neutral-500 line-through block">原價 $185,000</span>
+                        <span className="text-4xl md:text-5xl font-bold text-white">NT$ 150,000</span>
+                      </div>
+                    </div>
+          
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-12">
+                      {[
+                        { label: "專業燈光設計規劃", icon: "🎨" },
+                        { label: "智慧燈具安裝 (20顆)", icon: "💡" },
+                        { label: "智慧開關切換器 (5組)", icon: "🔘" },
+                        { label: "智慧電動窗簾系統 (1組)", icon: "🪟" },
+                        { label: "全屋智慧系統整合", icon: "🔗" },
+                        { label: "專屬生活情境設定", icon: "🪄" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-4 text-neutral-300">
+                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm">
+                            ✓
+                          </span>
+                          <span className="font-medium">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+          
+                    <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="text-sm text-neutral-500">
+                        * 包含施工、設定及原廠一年保固服務
+                      </div>
+                      <a href="https://line.me/ti/p/~mish0207" className="w-full md:w-auto px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-colors text-center">
+                        立即預約諮詢
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </main>
   
         {/* Footer */}
