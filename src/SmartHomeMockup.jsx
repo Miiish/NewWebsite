@@ -127,13 +127,13 @@ export default function SmartHomeMockup() {
               {/* 1. 服務商定位標籤 */}
               <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 animate-fade-in">
                 <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  專業規劃
+                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 專業規劃
                 </span>
                 <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  精準安裝
+                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 精準安裝
                 </span>
                 <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  原廠保固
+                  <i className="fa-solid fa-check-circle mr-2 text-green-400"></i> 原廠保固
                 </span>
               </div>
           
