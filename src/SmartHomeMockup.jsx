@@ -146,16 +146,51 @@ export default function SmartHomeMockup() {
           </div>
         </section>
 
-        {/* Section 3: About (品牌故事與 SEO) */}
-        <section className="py-24 px-6 max-w-4xl mx-auto text-center">
-          <h2 className="text-cyan-400 text-sm tracking-[0.3em] mb-4 uppercase">About MuMu</h2>
-          <h3 className="text-3xl font-bold mb-8">來自彰化，傳承五十年的工藝</h3>
-          <p className="text-lg text-neutral-300 leading-[2.2] tracking-wide text-balance">
-            我們擁有超過 50 年的玻璃工程專業背景，<br />
-            深知建築結構與光影的互動。現在，我們將這份職人精神結合{' '}
-            <strong className="text-cyan-400">智慧家庭服務</strong>，<br />
-            為您打造專屬的 <strong className="text-cyan-400">HomeKit 燈光設計</strong> 解決方案。
-          </p>
+        {/* Section 3: About (第三代傳承優化) */}
+        <section className="py-24 px-6 relative overflow-hidden">
+          {/* 背景裝飾光暈 */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="inline-block px-3 py-1 border border-cyan-500/30 rounded-full mb-8">
+              <span className="text-cyan-400 text-xs tracking-[0.3em] uppercase font-medium">Legacy meets Future</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl font-bold mb-12 tracking-tight leading-tight text-balance">
+              五十載工藝底蘊，<br className="hidden md:block" />
+              由<span className="text-cyan-400">第三代</span>賦予數位靈魂
+            </h2>
+        
+            <div className="grid md:grid-cols-2 gap-12 text-left items-start leading-relaxed">
+              {/* 左側：第一、二代的工藝 */}
+              <div className="space-y-4 border-l-2 border-white/10 pl-6">
+                <h4 className="text-white font-bold text-lg">職人工藝的起點</h4>
+                <p className="text-neutral-400">
+                  誕生於彰化，沐沐源自超過 50 年的玻璃工程家族。老一輩對建築結構的嚴謹要求，是我們血液裡的基因。我們深知：沒有穩定的工程基礎，再華麗的科技都是空談。
+                </p>
+              </div>
+        
+              {/* 右側：第三代的科技 */}
+              <div className="space-y-4 border-l-2 border-cyan-500/50 pl-6">
+                <h4 className="text-cyan-400 font-bold text-lg">智慧家庭的轉身</h4>
+                <p className="text-neutral-300">
+                  現在，第三代將這份職人精神與智慧科技接軌。我們不只理解玻璃與光，更精通系統整合。將經典工程經驗轉化為專業的 **HomeKit 燈光設計**。
+                </p>
+              </div>
+            </div>
+        
+            {/* Slogan 強調區塊 */}
+            <div className="mt-20 py-12 border-t border-white/5">
+              <blockquote className="text-2xl md:text-3xl font-medium text-white/90">
+                「穩定，是第一代留下的<span className="text-cyan-400">底線</span>；<br />
+                氛圍，是第三代追求的<span className="text-cyan-400">極限</span>。」
+              </blockquote>
+            </div>
+        
+            <p className="mt-12 text-neutral-500 max-w-2xl mx-auto text-sm tracking-widest">
+              我們在傳統工法的基石上，為您打造最懂人心的智慧居家。
+            </p>
+          </div>
         </section>
 
         {/* Section 4: Contact Form */}
