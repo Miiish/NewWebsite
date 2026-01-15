@@ -116,37 +116,41 @@ export default function SmartHomeMockup() {
             ref={heroRef}
             className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden"
           >
-            {/* 動態背景與亮度遮罩 (保持原有 light 互動) */}
+            {/* 背景圖片：確保 RWD 覆蓋 */}
             <div 
-              className="absolute inset-0 bg-[url('/hero3.jpg')] bg-cover bg-center transition-transform duration-[10s]"
-              style={{ transform: `scale(${1.1 - light * 0.1})` }}
+              className="absolute inset-0 bg-[url('/hero3.jpg')] bg-cover bg-center"
+              aria-hidden="true"
             />
-            <div className="absolute inset-0 bg-black/10" />
+            
+            {/* 亮度遮罩：增加文字可讀性 */}
+            <div className="absolute inset-0 bg-black/30" />
           
-            <div className="relative z-10 px-6 max-w-5xl">
-              {/* 1. 服務商定位標籤 */}
-              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 ">
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  專業規劃
-                </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  精準安裝
-                </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
-                  原廠保固
-                </span>
+            <div className="relative z-10 px-6 w-full max-w-5xl">
+              {/* 服務標籤組 */}
+              <div className="mb-8 flex flex-wrap justify-center gap-2 md:gap-4">
+                {['專業規劃', '精準安裝', '原廠保固'].map((text) => (
+                  <span 
+                    key={text}
+                    className="px-3 py-1 md:px-5 md:py-1.5 rounded-full bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap"
+                  >
+                    {text}
+                  </span>
+                ))}
               </div>
           
-              {/* 2. 主標題：直接點出「規劃與安裝」 */}
-              {/* <h2 className="text-2xl md:text-5xl mb-8 tracking-tight text-white leading-[1.15]">
+              {/* 主標題 */}
+              <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight md:leading-[1.2]">
                 從規劃到安裝，<br />
-                打造最懂您的<span className="text-cyan-400 underline underline-offset-8 decoration-cyan-400/30">智慧家庭</span>
-              </h2> */}
+                打造最懂您的
+                <span className="text-cyan-400 block md:inline mt-2 md:mt-0 md:ml-2">
+                  智慧家庭
+                </span>
+              </h1>
               
-              {/* 下滑提示
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-30 animate-bounce">
-                <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent mx-auto" />
-              </div> */}
+              {/* 副標題 (選填，可增加轉換率) */}
+              <p className="mt-6 text-gray-300 text-sm md:text-lg max-w-2xl mx-auto font-light">
+                讓科技與生活美學無縫接軌，為您量身定制專屬的居家自動化方案。
+              </p>
             </div>
           </section>
           
