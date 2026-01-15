@@ -112,45 +112,32 @@ export default function SmartHomeMockup() {
         <main>
 
           {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
+          {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
           <section 
             ref={heroRef}
-            className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden"
+            className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-black"
           >
-            {/* 背景圖片：確保 RWD 覆蓋 */}
+            {/* 背景圖片：取消動畫、改為 RWD 模式 */}
             <div 
-              className="absolute inset-0 bg-[url('/hero3.jpg')] bg-cover bg-center"
-              aria-hidden="true"
+              className="absolute inset-0 bg-[url('/hero3.jpg')] bg-contain bg-center bg-no-repeat"
             />
             
-            {/* 亮度遮罩：增加文字可讀性 */}
-            <div className="absolute inset-0 bg-black/30" />
-          
-            <div className="relative z-10 px-6 w-full max-w-5xl">
-              {/* 服務標籤組 */}
-              <div className="mb-8 flex flex-wrap justify-center gap-2 md:gap-4">
-                {['專業規劃', '精準安裝', '原廠保固'].map((text) => (
-                  <span 
-                    key={text}
-                    className="px-3 py-1 md:px-5 md:py-1.5 rounded-full bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap"
-                  >
-                    {text}
-                  </span>
-                ))}
-              </div>
-          
-              {/* 主標題 */}
-              <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-white leading-tight md:leading-[1.2]">
-                從規劃到安裝，<br />
-                打造最懂您的
-                <span className="text-cyan-400 block md:inline mt-2 md:mt-0 md:ml-2">
-                  智慧家庭
+            {/* 遮罩層 (保留原有的 black/10) */}
+            <div className="absolute inset-0 bg-black/10" />
+            
+            <div className="relative z-10 px-6 max-w-5xl">
+              {/* 1. 服務商定位標籤 */}
+              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 ">
+                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+                  專業規劃
                 </span>
-              </h1>
-              
-              {/* 副標題 (選填，可增加轉換率) */}
-              <p className="mt-6 text-gray-300 text-sm md:text-lg max-w-2xl mx-auto font-light">
-                讓科技與生活美學無縫接軌，為您量身定制專屬的居家自動化方案。
-              </p>
+                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+                  精準安裝
+                </span>
+                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+                  原廠保固
+                </span>
+              </div>
             </div>
           </section>
           
