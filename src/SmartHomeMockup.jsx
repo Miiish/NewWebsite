@@ -124,17 +124,20 @@ export default function SmartHomeMockup() {
             
             {/* 遮罩層 (保留原有的 black/10) */}
             <div className="absolute inset-0 bg-black/10" />
-            
-            <div className="relative z-10 px-6 max-w-5xl">
+          </section>
+
+          {/* Section: Transition - 服務商定位標籤轉場 */}
+          <section className="relative z-10 w-full py-12 md:py-20 bg-slate-950 flex flex-col items-center justify-center border-y border-white/5">
+            <div className="px-6 max-w-5xl">
               {/* 1. 服務商定位標籤 */}
-              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 ">
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-6">
+                <span className="px-6 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
                   專業規劃
                 </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+                <span className="px-6 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
                   精準安裝
                 </span>
-                <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+                <span className="px-6 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs md:text-sm font-bold tracking-[0.2em] uppercase">
                   原廠保固
                 </span>
               </div>
