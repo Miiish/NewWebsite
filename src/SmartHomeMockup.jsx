@@ -409,7 +409,7 @@ export default function SmartHomeMockup() {
         <footer className="py-12 px-6 border-t border-white/5 text-center">
           <div className="flex justify-center gap-6 mb-8 text-neutral-400 text-sm">
             <span>LINE ID: mish0207</span>
-            <span>電話: 0975-090-703</span>
+            <span>Mail: service@mumusmart.com</span>
           </div>
           <p className="text-neutral-600 text-xs">© 2025 沐沐智慧家庭 - 彰化專業智慧家居工程</p>
         </footer>
