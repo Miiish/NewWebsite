@@ -120,7 +120,7 @@ export default function SmartHomeMockup() {
           >
             {/* 背景圖片：RWD 縮放並置中 */}
             <div 
-              className="absolute inset-0 bg-[url('/hero3.jpg')] bg-contain bg-center bg-no-repeat"
+              className="absolute inset-0 bg-[url('/hero4.jpg')] bg-contain bg-center bg-no-repeat"
             />
             
             {/* 輕微遮罩 */}
