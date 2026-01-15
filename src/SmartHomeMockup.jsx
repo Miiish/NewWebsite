@@ -122,9 +122,6 @@ export default function SmartHomeMockup() {
             <div 
               className="absolute inset-0 bg-[url('/hero4.jpg')] bg-contain bg-center bg-no-repeat"
             />
-            
-            {/* 輕微遮罩 */}
-            <div className="absolute inset-0 bg-black/10" />
           </section>
         
           {/* Section 2: 服務商定位標籤 (轉場區塊) */}
