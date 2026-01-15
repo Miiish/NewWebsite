@@ -121,11 +121,11 @@ export default function SmartHomeMockup() {
               className="absolute inset-0 bg-[url('/hero3.jpg')] bg-cover bg-center transition-transform duration-[10s]"
               style={{ transform: `scale(${1.1 - light * 0.1})` }}
             />
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-black/10" />
           
             <div className="relative z-10 px-6 max-w-5xl">
               {/* 1. 服務商定位標籤 */}
-              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 animate-fade-in">
+              <div className="mb-6 flex flex-wrap justify-center gap-2 md:gap-4 ">
                 <span className="px-4 py-1 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase">
                   專業規劃
                 </span>
@@ -143,10 +143,10 @@ export default function SmartHomeMockup() {
                 打造最懂您的<span className="text-cyan-400 underline underline-offset-8 decoration-cyan-400/30">智慧家庭</span>
               </h2> */}
               
-              {/* 下滑提示 */}
+              {/* 下滑提示
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-30 animate-bounce">
                 <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent mx-auto" />
-              </div>
+              </div> */}
             </div>
           </section>
           
