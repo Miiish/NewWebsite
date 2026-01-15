@@ -118,7 +118,7 @@ export default function SmartHomeMockup() {
           >
             {/* 動態背景與亮度遮罩 (保持原有 light 互動) */}
             <div 
-              className="absolute inset-0 bg-[url('/hero1.jpg')] bg-cover bg-center transition-transform duration-[10s]"
+              className="absolute inset-0 bg-[url('/hero2.jpg')] bg-cover bg-center transition-transform duration-[10s]"
               style={{ transform: `scale(${1.1 - light * 0.1})` }}
             />
             <div className="absolute inset-0 bg-black/50" />
