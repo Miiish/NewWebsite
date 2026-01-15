@@ -111,23 +111,24 @@ export default function SmartHomeMockup() {
   
         <main>
 
-          {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
-          {/* Section 1: Hero - 定義規劃與安裝服務商角色 */}
+          {/* 統一背景容器：確保 Section 1 與 2 視覺連貫 */}
+
+          {/* Section 1: Hero 圖片區塊 */}
           <section 
             ref={heroRef}
-            className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-black"
+            className="relative w-full aspect-video min-h-[400px] flex flex-col items-center justify-center overflow-hidden"
           >
-            {/* 背景圖片：取消動畫、改為 RWD 模式 */}
+            {/* 背景圖片：RWD 縮放並置中 */}
             <div 
               className="absolute inset-0 bg-[url('/hero3.jpg')] bg-contain bg-center bg-no-repeat"
             />
             
-            {/* 遮罩層 (保留原有的 black/10) */}
+            {/* 輕微遮罩 */}
             <div className="absolute inset-0 bg-black/10" />
           </section>
-
-          {/* Section: Transition - 服務商定位標籤轉場 */}
-          <section className="relative z-10 w-full py-12 md:py-20 bg-slate-950 flex flex-col items-center justify-center border-y border-white/5">
+        
+          {/* Section 2: 服務商定位標籤 (轉場區塊) */}
+          <section className="relative z-10 w-full pb-16 pt-4 flex flex-col items-center justify-center">
             <div className="px-6 max-w-5xl">
               {/* 1. 服務商定位標籤 */}
               <div className="flex flex-wrap justify-center gap-3 md:gap-6">
