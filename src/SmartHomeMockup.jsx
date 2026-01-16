@@ -372,6 +372,72 @@ export default function SmartHomeMockup() {
             </div>
           </section>
 
+          {/* 輕奢組合方案區塊 */}
+          <section className="py-24 px-6 bg-neutral-900">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative overflow-hidden bg-neutral-950 border border-white/10 rounded-[2.5rem] shadow-2xl">
+                {/* 方案上方裝飾：品牌色漸層 */}
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+          
+                <div className="p-8 md:p-16">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+                    <div>
+                      <span className="inline-block px-4 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-sm font-bold mb-4 tracking-widest">
+                        HOT ITEM
+                      </span>
+                      <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">小資輕奢組合</h3>
+                      <p className="text-neutral-400 text-lg">適合 2 房 1 廳 / 3 房 2 廳配置</p>
+                    </div>
+                    <div className="text-left md:text-right">
+                      <span className="text-neutral-500 line-through text-lg block mb-1">原價 $185,000</span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-cyan-400 text-2xl font-bold">NT$</span>
+                        <span className="text-5xl md:text-6xl font-black text-white tracking-tighter">170,000</span>
+                      </div>
+                    </div>
+                  </div>
+          
+                  {/* 清單項目：使用兩欄排版提升閱讀感 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-12 mb-16">
+                    {[
+                      "燈光設計規劃",
+                      "20盞燈具 (含專業安裝)",
+                      "5組智慧開關切換",
+                      "1組智慧電動窗簾",
+                      "全屋網路穩定設定",
+                      "全屋智慧系統整合",
+                      "專屬生活情境設定"
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-4 group">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/40 flex items-center justify-center">
+                          <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-neutral-200 text-lg font-medium group-hover:text-white transition-colors">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+          
+                  {/* 行動呼籲 */}
+                  <div className="flex flex-col md:flex-row items-center gap-6 pt-10 border-t border-white/5">
+                    <p className="text-sm text-neutral-500 max-w-sm">
+                      * 價格包含基礎安裝工資與系統調教。現場如有特殊施作需求，將依實際場勘狀況調整。
+                    </p>
+                    <a 
+                      href="#contact" 
+                      className="w-full md:w-auto ml-auto px-12 py-5 bg-cyan-400 text-black font-black rounded-2xl hover:bg-cyan-300 hover:-translate-y-1 transition-all shadow-[0_10px_30px_rgba(34,211,238,0.3)] text-center"
+                    >
+                      預約現場場勘
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Section 4: Contact Form */}
           <section id="contact" className="py-24 px-6 bg-neutral-900">
             <div className="max-w-xl mx-auto">
