@@ -395,12 +395,6 @@ export default function SmartHomeMockup() {
                 
                 <p className="text-neutral-400">留下資料，由專人與您聯繫安排體驗時間</p>
               </div>
-          
-              {sent ? (
-                // ... (原本訊息送出的內容保持不變)
-              ) : (
-                // ... (原本 form 的內容保持不變)
-              )}
             </div>
           </section>
         </main>
