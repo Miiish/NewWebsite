@@ -390,7 +390,7 @@ export default function SmartHomeMockup() {
                 <div className="bg-cyan-400/10 border border-cyan-400/50 p-8 rounded-3xl text-center">
                   <h4 className="text-cyan-400 text-xl font-bold mb-2">訊息已送出！</h4>
                   <p className="text-sm text-cyan-100/70 mb-6">我們將在 24 小時內聯繫您。</p>
-                  <a href="https://line.me/ti/p/~mish0207" className="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold">
+                  <a href="https://line.me/ti/p/~@990hyion" className="inline-block bg-cyan-400 text-black px-8 py-3 rounded-full font-bold">
                     直接透過 LINE 諮詢
                   </a>
                 </div>
@@ -414,7 +414,7 @@ export default function SmartHomeMockup() {
         {/* Footer */}
         <footer className="py-12 px-6 border-t border-white/5 text-center">
           <div className="flex justify-center gap-6 mb-8 text-neutral-400 text-sm">
-            <span>LINE ID: mish0207</span>
+            <span>LINE ID: @990hyion</span>
             <span>Mail: service@mumusmart.com</span>
           </div>
           <p className="text-neutral-600 text-xs">© 2025 沐沐智慧家庭 - 彰化專業智慧家居工程</p>
@@ -422,7 +422,7 @@ export default function SmartHomeMockup() {
   
         {/* Floating Line CTA */}
         <a
-          href="https://line.me/ti/p/~mish0207"
+          href="https://line.me/ti/p/~@990hyion"
           className="fixed right-6 bottom-6 z-[100] bg-[#06C755] hover:scale-110 transition-transform flex items-center gap-2 px-5 py-3 rounded-full shadow-2xl"
         >
           <img 
