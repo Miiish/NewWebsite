@@ -378,23 +378,103 @@ export default function SmartHomeMockup() {
             </div>
           </section>
 
-          {/* Section 4: Contact Form */}
+          {/* Section 4: Contact Form - 預約體驗與地點資訊 */}
           <section id="contact" className="py-24 px-6 bg-neutral-900">
             <div className="max-w-xl mx-auto">
+              {/* 標題與地點卡片 */}
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">預約體驗</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">預約體驗</h2>
                 
-                {/* 新增：地點資訊 */}
-                <div className="flex items-center justify-center gap-2 text-cyan-400 mb-4">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span className="font-medium tracking-wide">體驗地點：台中市潭子區</span>
+                {/* 地點資訊標籤 */}
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 mb-8 transition-all hover:border-cyan-400/50 group">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs text-neutral-500 uppercase tracking-widest font-bold">Experience Center</p>
+                    <p className="text-lg text-white font-medium">台中市潭子區</p>
+                  </div>
                 </div>
-                
-                <p className="text-neutral-400">留下資料，由專人與您聯繫安排體驗時間</p>
+          
+                <p className="text-neutral-400 text-lg">
+                  親身感受智慧燈光與情境切換的魅力<br className="hidden md:block"/>
+                  留下聯絡資料，我們將由專人與您聯繫
+                </p>
               </div>
+          
+              {/* 表單切換邏輯 */}
+              {sent ? (
+                <div className="bg-cyan-400/10 border border-cyan-400/50 p-10 rounded-[2rem] text-center backdrop-blur-sm animate-fade-in">
+                  <div className="w-20 h-20 bg-cyan-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(34,211,238,0.4)]">
+                    <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-cyan-400 text-2xl font-bold mb-3">需求已成功送出</h4>
+                  <p className="text-cyan-100/70 mb-8 leading-relaxed">
+                    感謝您的預約，我們將在 24 小時內與您聯繫。<br/>
+                    急件歡迎點擊下方按鈕加入官方 LINE。
+                  </p>
+                  <a 
+                    href="https://line.me/ti/p/~@990hyion" 
+                    className="inline-flex items-center gap-2 bg-cyan-400 text-black px-10 py-4 rounded-2xl font-black hover:scale-105 transition-all"
+                  >
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="Line" className="w-5 h-5" />
+                    即刻 LINE 諮詢
+                  </a>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="group">
+                    <input 
+                      name="name" 
+                      required 
+                      placeholder="姓名 / 稱呼" 
+                      className="w-full p-5 rounded-2xl bg-neutral-800/50 border border-white/5 focus:border-cyan-400 focus:bg-neutral-800 outline-none transition-all placeholder:text-neutral-600" 
+                    />
+                  </div>
+                  
+                  <div className="group">
+                    <input 
+                      name="contact" 
+                      required 
+                      placeholder="電話或 LINE ID" 
+                      className="w-full p-5 rounded-2xl bg-neutral-800/50 border border-white/5 focus:border-cyan-400 focus:bg-neutral-800 outline-none transition-all placeholder:text-neutral-600" 
+                    />
+                  </div>
+          
+                  <div className="group">
+                    <textarea 
+                      name="note" 
+                      rows="4" 
+                      placeholder="方便聯繫的時間或您的需求（例如：新成屋規劃、局部改裝...）" 
+                      className="w-full p-5 rounded-2xl bg-neutral-800/50 border border-white/5 focus:border-cyan-400 focus:bg-neutral-800 outline-none transition-all placeholder:text-neutral-600 resize-none" 
+                    />
+                  </div>
+          
+                  <button 
+                    disabled={sending} 
+                    className="w-full bg-cyan-400 text-black font-black py-5 rounded-2xl hover:bg-cyan-300 hover:shadow-[0_10px_30px_rgba(34,211,238,0.3)] transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+                  >
+                    {sending ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg className="animate-spin h-5 w-5 text-black" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        傳送中...
+                      </span>
+                    ) : '送出需求，預約體驗'}
+                  </button>
+                  
+                  <p className="text-center text-neutral-600 text-xs pt-4 tracking-widest uppercase">
+                    Service Areas: Taichung / Changhua / Nantou
+                  </p>
+                </form>
+              )}
             </div>
           </section>
         </main>
