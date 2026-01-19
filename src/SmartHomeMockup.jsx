@@ -86,13 +86,6 @@ export default function SmartHomeMockup() {
         })}
       </script>
       <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-cyan-500/30">
-        <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
-          :root { --brand: ${BRAND}; }
-          html { scroll-behavior: smooth; font-family: 'Noto Sans TC', sans-serif; }
-          .text-balance { text-wrap: balance; }
-        `}</style>
-  
         {/* SEO 隱藏標題 */}
         <h1 className="sr-only">沐沐智慧家庭 - 提供專業 智慧燈光設計與智慧家庭服務</h1>
   
