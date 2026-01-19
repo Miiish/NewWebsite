@@ -87,7 +87,8 @@ export default function SmartHomeMockup() {
       </script>
       <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-cyan-500/30">
         {/* SEO 隱藏標題 */}
-        <h1 className="sr-only">沐沐智慧家庭 - 提供專業 智慧燈光設計與智慧家庭服務</h1>
+        <h1 className="sr-only">沐沐智慧家庭 - 台灣首選智慧家居解決方案</h1> (全網頁只能有一個)
+        <h2 className="sr-only">職人工藝：打造您的 MuMu Smart Home</h2>
   
         {/* Header */}
         <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-md">
