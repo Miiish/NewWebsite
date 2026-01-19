@@ -246,7 +246,7 @@ export default function SmartHomeMockup() {
               </div>
               
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/5 cursor-pointer group" onClick={togglePlay}>
-                <video 
+                <video muted playsinline
                   ref={videoRef}
                   src="/video.mp4"
                   loop muted playsInline autoPlay
