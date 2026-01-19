@@ -339,13 +339,13 @@ export default function SmartHomeMockup() {
                         <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">小資輕奢組合</h3>
                         <p className="text-neutral-400 text-lg">適合 2 房 1 廳 / 3 房 2 廳配置</p>
                       </div>
-                      /*<div className="text-left md:text-right">
+                      {/*<div className="text-left md:text-right">
                         <span className="text-neutral-500 line-through text-lg block mb-1">原價 $185,000</span>
                         <div className="flex items-baseline gap-2">
                           <span className="text-cyan-400 text-2xl font-bold">NT$</span>
                           <span className="text-5xl md:text-6xl font-black text-white tracking-tighter">170,000</span>
                         </div>
-                      </div>*/
+                      </div>*/}
                     </div>
           
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mb-12">
