@@ -292,7 +292,7 @@ export default function SmartHomeMockup() {
               <div className="grid md:grid-cols-2 gap-12 text-left items-start leading-relaxed">
                 {/* 左側：第一、二代的工藝 */}
                 <div className="space-y-4 border-l-2 border-white/10 pl-6">
-                  <h3 className="text-white font-bold text-lg">職人工藝的起點</h4>
+                  <h3 className="text-white font-bold text-lg">職人工藝的起點</h3>
                   <p className="text-neutral-400">
                     誕生於彰化，沐沐源自超過 50 年的玻璃工程家族。老一輩對建築結構的嚴謹要求，是我們血液裡的基因。我們深知：沒有穩定的工程基礎，再華麗的科技都是空談。
                   </p>
@@ -300,7 +300,7 @@ export default function SmartHomeMockup() {
           
                 {/* 右側：第三代的科技 */}
                 <div className="space-y-4 border-l-2 border-cyan-500/50 pl-6">
-                  <h3 className="text-cyan-400 font-bold text-lg">智慧家庭的轉身</h4>
+                  <h3 className="text-cyan-400 font-bold text-lg">智慧家庭的轉身</h3>
                   <p className="text-neutral-300">
                     現在，第三代將這份職人精神與智慧科技接軌。我們不只理解玻璃與光，更精通系統整合。將經典工程經驗轉化為專業的 <b>智慧燈光控制</b>。
                   </p>
