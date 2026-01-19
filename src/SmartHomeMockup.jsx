@@ -149,7 +149,7 @@ export default function SmartHomeMockup() {
           >
             {/* 背景圖層 */}
             <div 
-              className="absolute inset-0 bg-[url('/first.png')] bg-cover bg-center transition-transform duration-[2s]"
+              className="absolute inset-0 bg-[url('/first.webp')] bg-cover bg-center transition-transform duration-[2s]"
               style={{ transform: `scale(${1.05 - light * 0.05})` }}
             />
             {/* 動態亮度遮罩 */}
