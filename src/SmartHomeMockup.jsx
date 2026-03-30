@@ -243,7 +243,7 @@ export default function SmartHomeMockup() {
                 <video muted playsinline
                   ref={videoRef}
                   src="/video.mp4"
-                  loop muted playsInline autoPlay
+                  loop playsInline autoPlay
                   className="w-full aspect-video object-cover"
                 />
                 {isPaused && (
