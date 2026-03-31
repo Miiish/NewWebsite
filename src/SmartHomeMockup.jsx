@@ -124,16 +124,13 @@ export default function SmartHomeMockup() {
             />
             
             <div className="relative z-10 px-6 w-full max-w-5xl flex flex-col items-center mt-10">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tighter text-center" style={{ color: BRAND }}>
-                沐沐智慧家庭
-              </h1>
               <p className="text-xl md:text-3xl font-light tracking-widest text-white/90 text-center mb-12 text-balance">
                 讓光線成為空間的靈魂
               </p>
 
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full">
                 {['專業規劃', '精準安裝', '原廠保固'].map((tag) => (
-                  <span key={tag} className="px-5 py-2 rounded-full bg-[#6F8F9D]/10 border border-[#6F8F9D]/30 text-[#6F8F9D] text-xs md:text-sm font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
+                  <span key={tag} className="px-5 py-2 rounded-full bg-[#6F8F9D] border border-[#6F8F9D] text-[#6F8F9D] text-xs md:text-sm font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
                     {tag}
                   </span>
                 ))}
