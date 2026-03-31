@@ -1,8 +1,9 @@
 import React from 'react';
 
 export default function SmartHomeMockup() {
-  const BRAND = '#22d3ee';
-  const BRAND_INK = '#0e7490';
+  // 將品牌色替換為莫蘭迪藍色
+  const BRAND = '#6F8F9D';
+  const BRAND_LIGHT = '#84A3B1'; // 用於 hover 狀態
 
   // ====== Hero 燈光互動邏輯 ======
   const heroRef = React.useRef(null);
@@ -83,34 +84,32 @@ export default function SmartHomeMockup() {
 
   return (
     <>
-      {/* 讓 React 正確注入 JSON-LD，避免跳脫字元破壞結構 */}
       <script 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-cyan-500/30 font-sans">
+      <div className="min-h-screen bg-neutral-950 text-slate-50 antialiased selection:bg-[#6F8F9D]/30 font-sans">
         
         {/* Header */}
         <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-lg">
           <nav className="mx-auto max-w-7xl px-4 md:px-6 h-16 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded bg-cyan-400 flex items-center justify-center font-bold text-black text-xs">MU</div>
+              <div className="w-8 h-8 rounded bg-[#6F8F9D] flex items-center justify-center font-bold text-white text-xs">MU</div>
               <span className="font-bold tracking-tight text-lg">沐沐智慧家庭</span>
             </div>
-            <a href="#contact" className="bg-cyan-400 hover:bg-cyan-300 text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all transform active:scale-95">
+            <a href="#contact" className="bg-[#6F8F9D] hover:bg-[#84A3B1] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform active:scale-95 shadow-lg">
               立即體驗
             </a>
           </nav>
         </header>
 
         <main>
-          {/* Section 1: Hero (合併圖片與動態光影，改用 img 標籤利於 SEO) */}
+          {/* Section 1: Hero */}
           <section 
             ref={heroRef}
             className="relative min-h-[85vh] md:min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-16"
           >
-            {/* 使用 img 取代 bg-image 讓爬蟲讀取 alt 圖片描述 */}
             <img 
               src="/first.webp" 
               alt="沐沐智慧家庭 - 專業智慧燈光與窗簾控制整合"
@@ -119,25 +118,22 @@ export default function SmartHomeMockup() {
               fetchpriority="high"
             />
             
-            {/* 動態亮度遮罩 */}
             <div 
               className="absolute inset-0 transition-colors duration-300"
               style={{ backgroundColor: `rgba(0,0,0,${0.4 + (1 - light) * 0.5})` }}
             />
             
             <div className="relative z-10 px-6 w-full max-w-5xl flex flex-col items-center mt-10">
-              {/* 將隱藏標題改為畫面上最引人注目的 H1 */}
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tighter text-center" style={{ color: 'var(--brand, #22d3ee)' }}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tighter text-center" style={{ color: BRAND }}>
                 沐沐智慧家庭
               </h1>
               <p className="text-xl md:text-3xl font-light tracking-widest text-white/90 text-center mb-12 text-balance">
                 讓光線成為空間的靈魂
               </p>
 
-              {/* 服務商定位標籤 */}
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full">
                 {['專業規劃', '精準安裝', '原廠保固'].map((tag) => (
-                  <span key={tag} className="px-5 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs md:text-sm font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
+                  <span key={tag} className="px-5 py-2 rounded-full bg-[#6F8F9D]/10 border border-[#6F8F9D]/30 text-[#6F8F9D] text-xs md:text-sm font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
                     {tag}
                   </span>
                 ))}
@@ -149,7 +145,7 @@ export default function SmartHomeMockup() {
           <section id="services" className="py-16 md:py-24 px-6 bg-neutral-950">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-12 md:mb-16">
-                <span className="text-cyan-400 text-xs md:text-sm tracking-[0.3em] font-medium uppercase">Our Services</span>
+                <span className="text-[#6F8F9D] text-xs md:text-sm tracking-[0.3em] font-medium uppercase">Our Services</span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 tracking-tight">全方位智慧服務</h2>
                 <p className="max-w-2xl mx-auto text-neutral-400 text-base md:text-lg leading-relaxed text-balance">
                   我們提供從規劃到安裝的完整解決方案，不論是新成屋裝潢還是舊屋升級，
@@ -166,11 +162,11 @@ export default function SmartHomeMockup() {
                   { title: "影音娛樂控制", desc: "整合電視、音響與投影機，一鍵切換「劇院模式」，享受沉浸式視聽體驗，告別繁雜遙控器。", icon: "🎬" },
                   { title: "語音聲控助理", desc: "支援 Apple HomeKit, Google Home。動口不動手，讓房子聽懂你的指令，老人小孩都能輕鬆使用。", icon: "🗣️" }
                 ].map((item, idx) => (
-                  <div key={idx} className="group p-6 md:p-8 rounded-3xl bg-neutral-900 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                  <div key={idx} className="group p-6 md:p-8 rounded-3xl bg-neutral-900 border border-white/5 hover:border-[#6F8F9D]/30 transition-all duration-300 hover:-translate-y-1 shadow-lg">
                     <div className="text-3xl mb-4 bg-neutral-800 w-14 h-14 flex items-center justify-center rounded-2xl group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#6F8F9D] transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-neutral-400 leading-relaxed text-sm">
@@ -187,13 +183,12 @@ export default function SmartHomeMockup() {
             <div className="max-w-5xl mx-auto">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
                 <div className="text-left">
-                  <span className="text-cyan-400 font-mono text-xs md:text-sm tracking-widest uppercase">Smart Control</span>
+                  <span className="text-[#6F8F9D] font-mono text-xs md:text-sm tracking-widest uppercase">Smart Control</span>
                   <h2 className="text-3xl font-bold mt-2">窗簾系統</h2>
                 </div>
                 <p className="text-neutral-400 text-sm">點擊影片可切換播放狀態</p>
               </div>
               
-              {/* 針對行動版優化觸控範圍與視覺 */}
               <div 
                 className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 cursor-pointer group bg-black" 
                 onClick={togglePlay}
@@ -211,8 +206,8 @@ export default function SmartHomeMockup() {
                 />
                 {isPaused && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-all">
-                     <div className="w-16 h-16 md:w-20 md:h-20 bg-cyan-400 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.4)]">
-                       <div className="w-0 h-0 border-y-[10px] md:border-y-[12px] border-y-transparent border-l-[16px] md:border-l-[20px] border-l-black ml-1 md:ml-2" />
+                     <div className="w-16 h-16 md:w-20 md:h-20 bg-[#6F8F9D] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(111,143,157,0.4)]">
+                       <div className="w-0 h-0 border-y-[10px] md:border-y-[12px] border-y-transparent border-l-[16px] md:border-l-[20px] border-l-white ml-1 md:ml-2" />
                      </div>
                   </div>
                 )}
@@ -232,16 +227,16 @@ export default function SmartHomeMockup() {
 
           {/* Section 4: About */}
           <section className="py-16 md:py-24 px-6 relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-96 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-96 bg-[#6F8F9D]/10 blur-[100px] rounded-full pointer-events-none" />
             
             <div className="max-w-4xl mx-auto text-center relative z-10">
-              <div className="inline-block px-4 py-1.5 border border-cyan-500/30 rounded-full mb-8">
-                <span className="text-cyan-400 text-xs tracking-[0.2em] uppercase font-medium">Legacy meets Future</span>
+              <div className="inline-block px-4 py-1.5 border border-[#6F8F9D]/30 rounded-full mb-8">
+                <span className="text-[#6F8F9D] text-xs tracking-[0.2em] uppercase font-medium">Legacy meets Future</span>
               </div>
               
               <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-16 tracking-tight leading-tight text-balance">
                 五十載工藝底蘊，<br className="hidden md:block" />
-                由<span className="text-cyan-400">第三代</span>賦予數位靈魂
+                由<span className="text-[#6F8F9D]">第三代</span>賦予數位靈魂
               </h2>
           
               <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-left items-start leading-relaxed">
@@ -251,8 +246,8 @@ export default function SmartHomeMockup() {
                     誕生於彰化，沐沐源自超過 50 年的玻璃工程家族。老一輩對建築結構的嚴謹要求，是我們血液裡的基因。我們深知：沒有穩定的工程基礎，再華麗的科技都是空談。
                   </p>
                 </div>
-                <div className="space-y-3 border-l-2 border-cyan-500/50 pl-5 md:pl-6">
-                  <h3 className="text-cyan-400 font-bold text-lg md:text-xl">智慧家庭的轉身</h3>
+                <div className="space-y-3 border-l-2 border-[#6F8F9D]/50 pl-5 md:pl-6">
+                  <h3 className="text-[#6F8F9D] font-bold text-lg md:text-xl">智慧家庭的轉身</h3>
                   <p className="text-neutral-300 text-sm md:text-base">
                     現在，第三代將這份職人精神與智慧科技接軌。我們不只理解玻璃與光，更精通系統整合。將經典工程經驗轉化為專業的 <b>智慧燈光控制</b>。
                   </p>
@@ -269,7 +264,7 @@ export default function SmartHomeMockup() {
           <section className="py-16 md:py-24 px-4 md:px-6 bg-neutral-900">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12 md:mb-16">
-                <span className="text-cyan-400 text-xs md:text-sm tracking-[0.3em] font-medium uppercase">Affordable Luxury</span>
+                <span className="text-[#6F8F9D] text-xs md:text-sm tracking-[0.3em] font-medium uppercase">Affordable Luxury</span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4">全屋氛圍規劃方案</h2>
                 <p className="text-neutral-400 text-base md:text-lg text-balance">
                   專為小資族設計，用最合理的預算，實現最完整的智慧生活體驗。
@@ -277,12 +272,13 @@ export default function SmartHomeMockup() {
               </div>
           
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-[2rem] blur opacity-20 md:opacity-25 group-hover:opacity-40 transition duration-1000 hidden md:block"></div>
+                {/* 方案卡片的莫蘭迪光暈 */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#6F8F9D] to-[#4F6F7C] rounded-[2rem] blur opacity-20 md:opacity-25 group-hover:opacity-40 transition duration-1000 hidden md:block"></div>
                 
                 <div className="relative bg-neutral-950 border border-white/10 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl">
                   <div className="p-6 md:p-12">
                     <div className="flex flex-col mb-8 md:mb-12">
-                      <span className="self-start px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs font-bold mb-4 tracking-widest">
+                      <span className="self-start px-4 py-1.5 rounded-full bg-[#6F8F9D]/10 border border-[#6F8F9D]/30 text-[#6F8F9D] text-xs font-bold mb-4 tracking-widest">
                         HOT ITEM
                       </span>
                       <h3 className="text-3xl md:text-5xl font-bold text-white mb-2">小資輕奢組合</h3>
@@ -300,7 +296,7 @@ export default function SmartHomeMockup() {
                         { label: "專屬生活情境設定", icon: "🪄" }
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-4 text-neutral-300">
-                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm">
+                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6F8F9D]/10 border border-[#6F8F9D]/30 flex items-center justify-center text-[#6F8F9D] text-sm">
                             ✓
                           </span>
                           <span className="font-medium text-sm md:text-base">{item.label}</span>
@@ -324,7 +320,7 @@ export default function SmartHomeMockup() {
             <div className="max-w-xl mx-auto">
               <div className="text-center mb-10 md:mb-12">
                 <h2 className="text-3xl font-bold mb-4">預約體驗</h2>
-                <div className="flex items-center justify-center gap-2 text-cyan-400 mb-4">
+                <div className="flex items-center justify-center gap-2 text-[#6F8F9D] mb-4">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -335,24 +331,22 @@ export default function SmartHomeMockup() {
               </div>
     
               {sent ? (
-                <div className="bg-cyan-400/10 border border-cyan-400/50 p-6 md:p-8 rounded-[2rem] text-center shadow-lg">
-                  <h4 className="text-cyan-400 text-xl font-bold mb-2">訊息已送出！</h4>
-                  <p className="text-sm text-cyan-100/70 mb-8">我們將在 24 小時內聯繫您。</p>
-                  <a href="https://line.me/ti/p/~@990hyion" className="inline-block w-full md:w-auto bg-cyan-400 text-black px-8 py-4 rounded-full font-bold shadow-lg hover:bg-cyan-300 transition-colors">
+                <div className="bg-[#6F8F9D]/10 border border-[#6F8F9D]/50 p-6 md:p-8 rounded-[2rem] text-center shadow-lg">
+                  <h4 className="text-[#6F8F9D] text-xl font-bold mb-2">訊息已送出！</h4>
+                  <p className="text-sm text-[#D4E0E5]/70 mb-8">我們將在 24 小時內聯繫您。</p>
+                  <a href="https://line.me/ti/p/~@990hyion" className="inline-block w-full md:w-auto bg-[#6F8F9D] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-[#84A3B1] transition-colors">
                     直接透過 LINE 諮詢
                   </a>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* 加入 autoComplete 讓手機自動填寫，提升轉換率 */}
                   <input 
                     name="name" 
                     required 
                     autoComplete="name"
                     placeholder="姓名" 
-                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors text-base" 
+                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-[#6F8F9D] outline-none transition-colors text-base" 
                   />
-                  {/* type="tel" 及 inputMode 讓手機鍵盤自動切換為數字/電話鍵盤 */}
                   <input 
                     name="contact" 
                     type="tel"
@@ -360,17 +354,17 @@ export default function SmartHomeMockup() {
                     required 
                     autoComplete="tel"
                     placeholder="電話或 LINE ID" 
-                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors text-base" 
+                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-[#6F8F9D] outline-none transition-colors text-base" 
                   />
                   <textarea 
                     name="note" 
                     rows="4" 
                     placeholder="留下有空的時間（如：平日早上、全天有空...）" 
-                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-cyan-400 outline-none transition-colors text-base resize-none" 
+                    className="w-full p-4 rounded-2xl bg-neutral-800 border border-white/5 focus:border-[#6F8F9D] outline-none transition-colors text-base resize-none" 
                   />
                   <button 
                     disabled={sending} 
-                    className="w-full bg-cyan-400 text-black font-bold py-4 rounded-2xl hover:bg-cyan-300 transition-all disabled:opacity-50 text-lg shadow-lg"
+                    className="w-full bg-[#6F8F9D] text-white font-bold py-4 rounded-2xl hover:bg-[#84A3B1] transition-all disabled:opacity-50 text-lg shadow-lg"
                   >
                     {sending ? '傳送中...' : '送出需求'}
                   </button>
@@ -386,7 +380,7 @@ export default function SmartHomeMockup() {
             <span>LINE ID: @990hyion</span>
             <span>Mail: service@mumusmart.com</span>
           </div>
-          <p className="text-neutral-600 text-xs">© 2026 沐沐智慧家庭</p>
+          <p className="text-neutral-600 text-xs">© 2026 沐沐智慧家庭 - 彰化專業智慧家居工程</p>
         </footer>
 
         {/* Floating Line CTA */}
